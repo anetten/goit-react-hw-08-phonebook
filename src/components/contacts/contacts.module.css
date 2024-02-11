@@ -2,34 +2,37 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  color: #161412;
+  color: rgba(237, 234, 232, 0.605);
 }
+
 .contactText {
   display: flex;
   gap: 20px;
   font-size: 16px;
   margin-right: 20px;
   align-items: center;
-  color: #161412;
+  color: rgba(237, 234, 232, 0.605);
 }
 .contactName {
   font-weight: bold;
   font-size: 20px;
-  color: #161412;
+  color: rgba(237, 234, 232, 0.605);
 }
 .deleteContactBttn {
   width: 70px;
   padding: 10px;
   cursor: pointer;
-  background-color: #161412;
-  color: #dad6d2;
+  background-color: rgba(237, 234, 232, 0.605);
+  color: #161412b2;
   border-radius: 5px;
-  border: 1px solid #161412;
+  border: 1px solid #161412b2;
   transition: all 0.3s ease;
 }
 .deleteContactBttn:hover {
   background-color: #161412b2;
+  color: rgba(237, 234, 232, 0.739);
 }
 .deleteContactBttn:focus {
   background-color: #161412b2;
+  color: rgba(237, 234, 232, 0.739);
 }

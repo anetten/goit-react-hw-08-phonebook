@@ -22,7 +22,13 @@ const ContactsPage = () => {
       }}
     >
       <ContactForm />
-      <h2 style={{ textAlign: 'center', marginTop: '20px', color: '#161412' }}>
+      <h2
+        style={{
+          textAlign: 'center',
+          marginTop: '20px',
+          color: 'rgb(237, 234, 232)',
+        }}
+      >
         Contacts
       </h2>
       <Filter />

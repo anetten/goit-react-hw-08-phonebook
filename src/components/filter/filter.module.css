@@ -11,20 +11,20 @@
   gap: 10px;
   font-size: 18px;
   font-weight: 600;
-  color: #161412;
+  color: rgb(237, 234, 232);
 }
 .filterInput {
   padding: 5px;
-  border: 1px solid #161412;
+  border: 1px solid rgb(237, 234, 232);
   border-radius: 5px;
   font-size: 12px;
-  color: #161412;
+  color: rgb(237, 234, 232);
   background-color: transparent;
   width: 300px;
 }
 .filterInput:hover {
-  border: 1px solid #161412;
+  border: 1px solid rgb(237, 234, 232);
 }
 .filterInput::placeholder {
-  color: #161412;
+  color: rgb(237, 234, 232);
 }
