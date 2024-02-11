@@ -17,9 +17,8 @@ export const apiRegisterUser = createAsyncThunk(
   'auth/apiRegisterUser',
   async (formData, thunkApi) => {
     try {
-      // const { data } = await $authInstance.post('/users/signup', formData);
-      const response = await $authInstance.post('/users/signup', formData);
-      const { data } = response;
+      const { data } = await $authInstance.post('/users/signup', formData);
+
       setToken(data.token);
 
       return data;
