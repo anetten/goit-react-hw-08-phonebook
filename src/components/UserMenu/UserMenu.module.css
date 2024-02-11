@@ -1,0 +1,23 @@
+.user {
+  font-size: 18px;
+  font-weight: 600;
+  color: #161412;
+}
+.button {
+  width: 100px;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #161412;
+  background-color: #161412;
+  color: #dad6d2;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: #161412b2;
+}
+.container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
