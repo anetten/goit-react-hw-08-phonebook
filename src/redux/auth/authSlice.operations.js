@@ -17,13 +17,13 @@ export const apiRegisterUser = createAsyncThunk(
   'auth/apiRegisterUser',
   async (formData, thunkApi) => {
     try {
-      const { data } = await $authInstance.post('/users/signup', formData);
-
+      // const { data } = await $authInstance.post('/users/signup', formData);
+      const response = await $authInstance.post('/users/signup', formData);
+      const { data } = response;
       setToken(data.token);
 
       return data;
     } catch (error) {
-      console.error(error);
       thunkApi.rejectWithValue(error.message);
     }
   }
@@ -38,7 +38,6 @@ export const apiLoginUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.error(error);
       thunkApi.rejectWithValue(error.message);
     }
   }
