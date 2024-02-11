@@ -23,7 +23,7 @@ export const apiRegisterUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       thunkApi.rejectWithValue(error.message);
     }
   }
@@ -38,7 +38,7 @@ export const apiLoginUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       thunkApi.rejectWithValue(error.message);
     }
   }
