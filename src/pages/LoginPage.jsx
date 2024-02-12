@@ -15,7 +15,7 @@ const defaultTheme = createTheme();
 const LoginPage = () => {
   const dispatch = useDispatch();
 
-  const onSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -23,10 +23,20 @@ const LoginPage = () => {
       email: data.get('email'),
       password: data.get('password'),
     };
+
     if (!formData.email || !formData.password) {
       return Notiflix.Notify.failure('All fields must be filled out');
     }
-    dispatch(apiLoginUser(formData));
+
+    try {
+      await dispatch(apiLoginUser(formData)).unwrap();
+    } catch (error) {
+      if (error.message === 'Invalid credentials') {
+        alert('Invalid email or password. Please try again.');
+      } else {
+        Notiflix.Notify.failure(error.message);
+      }
+    }
   };
 
   return (
@@ -105,6 +115,7 @@ const LoginPage = () => {
                   id="password"
                   autoComplete="current-password"
                 />
+
                 <Button
                   type="submit"
                   fullWidth
