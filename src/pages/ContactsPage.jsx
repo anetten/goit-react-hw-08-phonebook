@@ -17,7 +17,7 @@ const ContactsPage = () => {
     <div
       style={{
         backgroundColor: 'rgb(176, 159, 150)',
-        height: '100vh',
+        minhHeight: '100vh',
         padding: '2rem',
       }}
     >

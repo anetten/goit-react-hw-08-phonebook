@@ -1,7 +1,60 @@
+// import React, { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { apiRegisterUser } from '../redux/auth/authSlice.operations';
+// import Notiflix from 'notiflix';
+
+// import Button from '@mui/material/Button';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import TextField from '@mui/material/TextField';
+// import Paper from '@mui/material/Paper';
+// import Grid from '@mui/material/Grid';
+// import Box from '@mui/material/Box';
+// import Container from '@mui/material/Container';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+// const defaultTheme = createTheme();
+
+// const RegisterPage = () => {
+//   const dispatch = useDispatch();
+
+//   //new
+//   const userRegister = useSelector(state => state.userRegister);
+//   const { success, error } = userRegister;
+//   //new
+
+//   const onSubmit = event => {
+//     event.preventDefault();
+//     const data = new FormData(event.currentTarget);
+
+//     const formData = {
+//       name: data.get('firstName') + ' ' + data.get('lastName'),
+//       email: data.get('email'),
+//       password: data.get('password'),
+//     };
+//     if (!formData.name || !formData.email || !formData.password) {
+//       return Notiflix.Notify.failure('All fields must be filled out');
+//     }
+
+//     dispatch(apiRegisterUser(formData));
+//   };
+
+//   //new
+//   useEffect(() => {
+//     if (success) {
+//       Notiflix.Loading.remove();
+//       Notiflix.Notify.success('Registration successful');
+//     }
+//     if (error) {
+//       Notiflix.Notify.failure(error);
+//     }
+//   }, [success, error]);
+//   //new
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { apiRegisterUser } from '../redux/auth/authSlice.operations';
 import Notiflix from 'notiflix';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +69,7 @@ const defaultTheme = createTheme();
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = event => {
     event.preventDefault();
@@ -30,7 +84,21 @@ const RegisterPage = () => {
       return Notiflix.Notify.failure('All fields must be filled out');
     }
 
-    dispatch(apiRegisterUser(formData));
+    dispatch(apiRegisterUser(formData))
+      .unwrap()
+      .then(() => {
+        Notiflix.Notify.success('Registration successful');
+        navigate('/login');
+      })
+      .catch(error => {
+        if (error.message === 'Email in use') {
+          alert(
+            'This email is already in use. Please log in or use a different email.'
+          );
+        } else {
+          Notiflix.Notify.failure(error.message);
+        }
+      });
   };
 
   return (
