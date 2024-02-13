@@ -39,13 +39,9 @@ const RegisterPage = () => {
         navigate('/login');
       })
       .catch(error => {
-        if (error.message === 'Email in use') {
-          alert(
-            'This email is already in use. Please log in or use a different email.'
-          );
-        } else {
-          Notiflix.Notify.failure(error.message);
-        }
+        return Notiflix.Notify.failure(
+          'This email is already in use. Please log in or use a different email.'
+        );
       });
   };
 

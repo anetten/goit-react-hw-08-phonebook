@@ -31,9 +31,7 @@ export const ContactForm = () => {
     );
 
     if (hasDuplicates) {
-      return Notiflix.Notify.failure(
-        `Contact ${formData.name} is already in contacts.`
-      );
+      return Notiflix.Notify.failure(`Contact with such data already exist.`);
     }
     const newContact = {
       ...formData,

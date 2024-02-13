@@ -31,11 +31,9 @@ const LoginPage = () => {
     try {
       await dispatch(apiLoginUser(formData)).unwrap();
     } catch (error) {
-      if (error.message === 'Invalid credentials') {
-        alert('Invalid email or password. Please try again.');
-      } else {
-        Notiflix.Notify.failure(error.message);
-      }
+      return Notiflix.Notify.failure(
+        'Invalid email or password. Please try again.'
+      );
     }
   };
 
